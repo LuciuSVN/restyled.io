@@ -1,6 +1,6 @@
 {-# LANGUAGE LambdaCase #-}
 
-module Backend.Webhook
+module Restyled.Backend.Webhook
     ( webhookQueueName
     , enqueueWebhook
     , awaitWebhook
@@ -9,11 +9,11 @@ module Backend.Webhook
     )
 where
 
-import Backend.Import
+import Restyled.Backend.Import
 
-import Backend.AcceptedJob
-import Backend.AcceptedWebhook
-import Backend.ExecRestyler
+import Restyled.Backend.AcceptedJob
+import Restyled.Backend.AcceptedWebhook
+import Restyled.Backend.ExecRestyler
 
 webhookQueueName :: ByteString
 webhookQueueName = "restyled:hooks:webhooks"

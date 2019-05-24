@@ -1,13 +1,13 @@
 -- | Type and handler for a Webhook we've decided to accept
-module Backend.AcceptedWebhook
+module Restyled.Backend.AcceptedWebhook
     ( AcceptedWebhook(..)
     , acceptWebhook
     )
 where
 
-import Backend.Import
+import Restyled.Backend.Import
 
-import Backend.Marketplace
+import Restyled.Backend.Marketplace
 
 data AcceptedWebhook = AcceptedWebhook
     { awRepo :: Entity Repo

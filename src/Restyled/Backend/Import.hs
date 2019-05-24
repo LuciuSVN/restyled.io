@@ -1,4 +1,4 @@
-module Backend.Import
+module Restyled.Backend.Import
     ( module X
     )
 where

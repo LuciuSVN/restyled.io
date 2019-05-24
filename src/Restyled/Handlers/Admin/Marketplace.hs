@@ -7,7 +7,7 @@ where
 
 import Restyled.Prelude
 
-import Backend.Marketplace (isPrivateRepoPlan)
+import Restyled.Backend.Marketplace (isPrivateRepoPlan)
 import Data.List (nub)
 import Restyled.Foundation
 import Restyled.Models

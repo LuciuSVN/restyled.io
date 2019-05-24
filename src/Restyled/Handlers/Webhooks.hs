@@ -5,7 +5,7 @@ where
 
 import Restyled.Prelude
 
-import Backend.Webhook
+import Restyled.Backend.Webhook
 import Conduit
 import Data.ByteString.Lazy (toStrict)
 import Data.Conduit.Binary

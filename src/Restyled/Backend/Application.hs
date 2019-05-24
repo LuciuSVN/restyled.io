@@ -1,19 +1,19 @@
 {-# LANGUAGE LambdaCase #-}
 
-module Backend.Application
+module Restyled.Backend.Application
     ( backendMain
     )
 where
 
-import Backend.Import
+import Restyled.Backend.Import
 
-import Backend.DockerRun
-import Backend.ExecRestyler
-import Backend.Foundation
-import Backend.Job
-import Backend.Marketplace
-import Backend.RestyleMachine
-import Backend.Webhook
+import Restyled.Backend.DockerRun
+import Restyled.Backend.ExecRestyler
+import Restyled.Backend.Foundation
+import Restyled.Backend.Job
+import Restyled.Backend.Marketplace
+import Restyled.Backend.RestyleMachine
+import Restyled.Backend.Webhook
 
 backendMain :: IO ()
 backendMain = do

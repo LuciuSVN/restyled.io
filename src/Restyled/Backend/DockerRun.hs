@@ -1,10 +1,10 @@
-module Backend.DockerRun
+module Restyled.Backend.DockerRun
     ( dockerRunArgs
     , dockerRunArgsLogged
     )
 where
 
-import Backend.Import
+import Restyled.Backend.Import
 
 dockerRunArgs
     :: AppSettings -> RepoAccessToken -> Repo -> Entity Job -> [String]

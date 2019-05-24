@@ -1,7 +1,7 @@
 {-# LANGUAGE LambdaCase #-}
 
 -- | Type and handler for Jobs that we accept or ignored
-module Backend.AcceptedJob
+module Restyled.Backend.AcceptedJob
     ( AcceptedJob(..)
     , acceptJob
     , IgnoredJobReason(..)
@@ -10,10 +10,10 @@ module Backend.AcceptedJob
     )
 where
 
-import Backend.Import
+import Restyled.Backend.Import
 
-import Backend.AcceptedWebhook
-import Backend.Marketplace
+import Restyled.Backend.AcceptedWebhook
+import Restyled.Backend.Marketplace
 
 data IgnoredJobReason
     = NonGitHubRepo Repo

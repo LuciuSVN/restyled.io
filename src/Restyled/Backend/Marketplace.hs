@@ -1,4 +1,4 @@
-module Backend.Marketplace
+module Restyled.Backend.Marketplace
     ( synchronizeMarketplacePlans
     , MarketplacePlanAllows(..)
     , MarketplacePlanLimitation(..)
@@ -8,7 +8,7 @@ module Backend.Marketplace
     )
 where
 
-import Backend.Import
+import Restyled.Backend.Import
 
 data GitHubMarketplacePlan = GitHubMarketplacePlan
     { ghmpId :: Int

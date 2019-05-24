@@ -1,12 +1,12 @@
 {-# LANGUAGE QuasiQuotes #-}
 
-module Backend.RestyleMachine
+module Restyled.Backend.RestyleMachine
     ( fetchRestyleMachine
     , runRestyleMachine
     )
 where
 
-import Backend.Import
+import Restyled.Backend.Import
 
 import qualified Data.Text.IO as T
 import Database.Persist.Sql (rawSql)

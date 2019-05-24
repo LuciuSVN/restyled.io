@@ -13,7 +13,7 @@ where
 
 import Restyled.Prelude
 
-import Backend.Job
+import Restyled.Backend.Job
 import Restyled.Foundation
 import Restyled.Models
 import Restyled.Routes

@@ -1,4 +1,4 @@
-module Backend.Foundation
+module Restyled.Backend.Foundation
     ( Backend(..)
     , loadBackend
     , runDB
@@ -6,7 +6,7 @@ module Backend.Foundation
     )
 where
 
-import Backend.Import
+import Restyled.Backend.Import
 
 -- | Like @'App'@ but with no webapp-related bits
 data Backend = Backend

@@ -13,8 +13,8 @@ where
 
 import Restyled.Prelude as X hiding (get, runDB)
 
-import Backend.Job (queueName)
-import Backend.Webhook (webhookQueueName)
+import Restyled.Backend.Job (queueName)
+import Restyled.Backend.Webhook (webhookQueueName)
 import Control.Monad.Fail (MonadFail(..))
 import Control.Monad.Logger (MonadLogger(..), toLogStr)
 import qualified Data.Text as T

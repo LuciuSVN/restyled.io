@@ -1,13 +1,13 @@
 -- | Execution of the Restyler process
-module Backend.ExecRestyler
+module Restyled.Backend.ExecRestyler
     ( ExecRestyler(..)
     , tryExecRestyler
     )
 where
 
-import Backend.Import
+import Restyled.Backend.Import
 
-import Backend.AcceptedJob
+import Restyled.Backend.AcceptedJob
 
 -- | Execution of the Restyler process
 --

@@ -12,7 +12,7 @@ where
 
 import Restyled.Prelude
 
-import Backend.RestyleMachine
+import Restyled.Backend.RestyleMachine
 import Restyled.Foundation
 import Restyled.Models
 import Restyled.Yesod
