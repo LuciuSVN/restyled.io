@@ -1,8 +1,8 @@
 {-# LANGUAGE TemplateHaskell #-}
 
 -- | Entities defined via @config/models@
-module Models.DB
-    ( module Models.DB
+module Restyled.Models.DB
+    ( module Restyled.Models.DB
     )
 where
 

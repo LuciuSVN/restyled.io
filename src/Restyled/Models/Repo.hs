@@ -1,6 +1,6 @@
 {-# LANGUAGE LambdaCase #-}
 
-module Models.Repo
+module Restyled.Models.Repo
     (
     -- * Virtual attributes
       repoPath
@@ -25,8 +25,8 @@ where
 import Restyled.Prelude
 
 import qualified Data.Text as T
-import Models.DB
-import Settings
+import Restyled.Models.DB
+import Restyled.Settings
 
 -- | Make a nicely-formatted @:owner\/:name@
 --

@@ -1,6 +1,6 @@
 {-# LANGUAGE CPP #-}
 
-module Settings
+module Restyled.Settings
     ( OAuthKeys(..)
     , addOAuth2Plugin
 

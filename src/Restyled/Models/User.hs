@@ -1,4 +1,4 @@
-module Models.User
+module Restyled.Models.User
     (
     -- * Virtual properties
       userIsAdmin
@@ -11,8 +11,8 @@ where
 
 import Restyled.Prelude
 
-import Models.DB
-import Settings
+import Restyled.Models.DB
+import Restyled.Settings
 
 userIsAdmin :: AppSettings -> User -> Bool
 userIsAdmin AppSettings {..} = maybe False (`elem` appAdmins) . userEmail

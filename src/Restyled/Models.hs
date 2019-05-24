@@ -1,9 +1,9 @@
-module Models
+module Restyled.Models
     ( module X
     )
 where
 
-import Models.DB as X
-import Models.Job as X
-import Models.Repo as X
-import Models.User as X
+import Restyled.Models.DB as X
+import Restyled.Models.Job as X
+import Restyled.Models.Repo as X
+import Restyled.Models.User as X

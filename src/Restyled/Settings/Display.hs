@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -fno-warn-deprecations #-}
 
-module Settings.Display
+module Restyled.Settings.Display
     ( displayAppSettings
     )
 where
@@ -10,7 +10,7 @@ import Restyled.Prelude
 import qualified Data.ByteString.Char8 as C8
 import Database.Persist.Postgresql (PostgresConf(..))
 import Database.Redis (ConnectInfo(..), PortID(..))
-import Settings
+import Restyled.Settings
 
 displayAppSettings :: AppSettings -> String
 displayAppSettings AppSettings {..} = concat

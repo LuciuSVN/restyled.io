@@ -1,6 +1,6 @@
 {-# LANGUAGE LambdaCase #-}
 
-module Models.Job
+module Restyled.Models.Job
     (
     -- * Creating Jobs
       insertJob
@@ -25,7 +25,7 @@ where
 
 import Restyled.Prelude
 
-import Models.DB
+import Restyled.Models.DB
 
 insertJob
     :: MonadIO m => Entity Repo -> PullRequestNum -> SqlPersistT m (Entity Job)
