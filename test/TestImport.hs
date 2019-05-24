@@ -71,9 +71,6 @@ withApp = before $ do
         runRedis wipeRedis
     return (foundation, id)
 
--- This function will truncate all of the tables in your database.
--- 'withApp' calls it before each test, creating a clean environment for each
--- spec to run in.
 wipeDB :: MonadIO m => SqlPersistT m ()
 wipeDB = do
     tables <- getTables
