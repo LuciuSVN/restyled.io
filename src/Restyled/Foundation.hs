@@ -1,8 +1,8 @@
 {-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE TemplateHaskell #-}
 
-module Foundation
-    ( module Foundation
+module Restyled.Foundation
+    ( module Restyled.Foundation
     )
 where
 

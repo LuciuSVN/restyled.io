@@ -1,19 +1,19 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
-module Application
+module Restyled.Application
     ( appMain
     )
 where
 
 import Restyled.Prelude
 
-import Foundation
 import Network.Wai (Middleware)
 import Network.Wai.Handler.Warp
 import Network.Wai.Middleware.ForceSSL
 import Network.Wai.Middleware.MethodOverridePost
 import Network.Wai.Middleware.RequestLogger (logStdout, logStdoutDev)
+import Restyled.Foundation
 import Restyled.Handlers.Admin
 import Restyled.Handlers.Admin.Jobs
 import Restyled.Handlers.Admin.Machines
