@@ -8,9 +8,9 @@ where
 
 import Restyled.Prelude
 
-import Api.Error
 import Data.Text (splitOn)
 import Database.Persist.Sql (ConnectionPool)
+import Restyled.ApiError
 import Restyled.Authentication
 import Restyled.Authorization
 import Restyled.Models
