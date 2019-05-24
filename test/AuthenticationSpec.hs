@@ -9,8 +9,7 @@ import TestImport
 
 import Authentication
 import qualified Data.Text as T
-import Yesod.Auth
-import Yesod.Auth.Message (defaultMessage)
+import Restyled.Yesod
 
 instance Eq (AuthenticationResult App) where
     Authenticated a == Authenticated b = a == b
@@ -34,17 +33,7 @@ spec = withApp $ do
                 (userId, result) <-
                     runDB
                     $ (,)
-                    <$> insert User
-                            { userEmail = Just "pat@example.com"
-                            , userGithubUserId = Nothing
-                            , userGithubUsername = Nothing
-                            , userGitlabUserId = Nothing
-                            , userGitlabUsername = Nothing
-                            , userGitlabAccessToken = Nothing
-                            , userGitlabRefreshToken = Nothing
-                            , userCredsIdent = credsIdent creds
-                            , userCredsPlugin = credsPlugin creds
-                            }
+                    <$> insert (someUser creds "pat@example.com")
                     <*> authenticateUser creds
 
                 result `shouldBe` Authenticated userId
@@ -61,17 +50,7 @@ spec = withApp $ do
                 (userId, result) <-
                     runDB
                     $ (,)
-                    <$> insert User
-                            { userEmail = Just "pat@example.com"
-                            , userGithubUserId = Nothing
-                            , userGithubUsername = Nothing
-                            , userGitlabUserId = Nothing
-                            , userGitlabUsername = Nothing
-                            , userGitlabAccessToken = Nothing
-                            , userGitlabRefreshToken = Nothing
-                            , userCredsIdent = credsIdent creds
-                            , userCredsPlugin = credsPlugin creds
-                            }
+                    <$> insert (someUser creds "pat@example.com")
                     <*> authenticateUser creds
 
                 result `shouldBe` Authenticated userId
@@ -102,49 +81,27 @@ spec = withApp $ do
 
                 Just result `shouldBe` (authenticatedAs <$> mUser)
 
-                (entityVal <$> mUser) `shouldBe` Just User
+                (entityVal <$> mUser) `shouldBe` Just (emptyUser creds)
                     { userEmail = Just "me@example.com"
                     , userGithubUserId = Just 1
                     , userGithubUsername = Just "pbrisbin"
-                    , userGitlabUserId = Nothing
-                    , userGitlabUsername = Nothing
-                    , userGitlabAccessToken = Nothing
-                    , userGitlabRefreshToken = Nothing
-                    , userCredsIdent = credsIdent creds
-                    , userCredsPlugin = credsPlugin creds
                     }
 
             it "updates an existing user" $ do
                 (userId, result, mUser) <-
                     runDB
                     $ (,,)
-                    <$> insert User
-                            { userEmail = Just "pat@example.com"
-                            , userGithubUserId = Nothing
-                            , userGithubUsername = Nothing
-                            , userGitlabUserId = Nothing
-                            , userGitlabUsername = Nothing
-                            , userGitlabAccessToken = Nothing
-                            , userGitlabRefreshToken = Nothing
-                            , userCredsIdent = credsIdent creds
-                            , userCredsPlugin = credsPlugin creds
-                            }
+                    <$> insert (someUser creds "pat@example.com")
                     <*> authenticateUser creds
                     <*> selectFirst [UserCredsPlugin ==. "github"] []
 
                 result `shouldBe` Authenticated userId
 
                 (entityKey <$> mUser) `shouldBe` Just userId
-                (entityVal <$> mUser) `shouldBe` Just User
+                (entityVal <$> mUser) `shouldBe` Just (emptyUser creds)
                     { userEmail = Just "me@example.com"
                     , userGithubUserId = Just 1
                     , userGithubUsername = Just "pbrisbin"
-                    , userGitlabUserId = Nothing
-                    , userGitlabUsername = Nothing
-                    , userGitlabAccessToken = Nothing
-                    , userGitlabRefreshToken = Nothing
-                    , userCredsIdent = credsIdent creds
-                    , userCredsPlugin = credsPlugin creds
                     }
 
 authenticatedAs :: Entity User -> AuthenticationResult App
@@ -153,3 +110,19 @@ authenticatedAs = Authenticated . entityKey
 isUserError :: AuthenticationResult site -> Bool
 isUserError (UserError _) = True
 isUserError _ = False
+
+someUser :: Creds site -> Text -> User
+someUser creds email = (emptyUser creds) { userEmail = Just email }
+
+emptyUser :: Creds site -> User
+emptyUser Creds {..} = User
+    { userEmail = Nothing
+    , userGithubUserId = Nothing
+    , userGithubUsername = Nothing
+    , userGitlabUserId = Nothing
+    , userGitlabUsername = Nothing
+    , userGitlabAccessToken = Nothing
+    , userGitlabRefreshToken = Nothing
+    , userCredsIdent = credsIdent
+    , userCredsPlugin = credsPlugin
+    }
