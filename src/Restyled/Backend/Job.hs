@@ -6,12 +6,13 @@ module Restyled.Backend.Job
     )
 where
 
-import Restyled.Backend.Import
+import Restyled.Prelude
 
 import Restyled.Backend.AcceptedWebhook
 import Restyled.Backend.ExecRestyler
 import Restyled.Backend.Marketplace
 import Restyled.Backend.Webhook
+import Restyled.Models
 
 queueName :: ByteString
 queueName = "restyled:restyler:jobs"

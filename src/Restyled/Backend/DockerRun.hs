@@ -4,7 +4,10 @@ module Restyled.Backend.DockerRun
     )
 where
 
-import Restyled.Backend.Import
+import Restyled.Prelude
+
+import Restyled.Models
+import Restyled.Settings
 
 dockerRunArgs
     :: AppSettings -> RepoAccessToken -> Repo -> Entity Job -> [String]

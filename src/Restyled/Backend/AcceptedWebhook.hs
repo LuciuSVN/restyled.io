@@ -5,9 +5,10 @@ module Restyled.Backend.AcceptedWebhook
     )
 where
 
-import Restyled.Backend.Import
+import Restyled.Prelude
 
 import Restyled.Backend.Marketplace
+import Restyled.Models
 
 data AcceptedWebhook = AcceptedWebhook
     { awRepo :: Entity Repo

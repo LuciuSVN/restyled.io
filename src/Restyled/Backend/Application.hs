@@ -5,7 +5,7 @@ module Restyled.Backend.Application
     )
 where
 
-import Restyled.Backend.Import
+import Restyled.Prelude
 
 import Restyled.Backend.DockerRun
 import Restyled.Backend.ExecRestyler
@@ -14,6 +14,8 @@ import Restyled.Backend.Job
 import Restyled.Backend.Marketplace
 import Restyled.Backend.RestyleMachine
 import Restyled.Backend.Webhook
+import Restyled.Models
+import Restyled.Settings
 
 backendMain :: IO ()
 backendMain = do

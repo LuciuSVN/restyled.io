@@ -6,10 +6,11 @@ module Restyled.Backend.RestyleMachine
     )
 where
 
-import Restyled.Backend.Import
+import Restyled.Prelude
 
 import qualified Data.Text.IO as T
 import Database.Persist.Sql (rawSql)
+import Restyled.Models
 import RIO.Directory
     (createDirectoryIfMissing, doesDirectoryExist, getHomeDirectory)
 import System.FilePath ((</>))

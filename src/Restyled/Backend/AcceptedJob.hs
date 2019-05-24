@@ -10,10 +10,11 @@ module Restyled.Backend.AcceptedJob
     )
 where
 
-import Restyled.Backend.Import
+import Restyled.Prelude
 
 import Restyled.Backend.AcceptedWebhook
 import Restyled.Backend.Marketplace
+import Restyled.Models
 
 data IgnoredJobReason
     = NonGitHubRepo Repo

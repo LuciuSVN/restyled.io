@@ -5,9 +5,10 @@ module Restyled.Backend.ExecRestyler
     )
 where
 
-import Restyled.Backend.Import
+import Restyled.Prelude
 
 import Restyled.Backend.AcceptedJob
+import Restyled.Models
 
 -- | Execution of the Restyler process
 --

@@ -6,7 +6,9 @@ module Restyled.Backend.Foundation
     )
 where
 
-import Restyled.Backend.Import
+import Restyled.Prelude
+
+import Restyled.Settings
 
 -- | Like @'App'@ but with no webapp-related bits
 data Backend = Backend

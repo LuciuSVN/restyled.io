@@ -8,7 +8,10 @@ module Restyled.Backend.Marketplace
     )
 where
 
-import Restyled.Backend.Import
+import Restyled.Prelude
+
+import Restyled.Models
+import Restyled.Settings
 
 data GitHubMarketplacePlan = GitHubMarketplacePlan
     { ghmpId :: Int

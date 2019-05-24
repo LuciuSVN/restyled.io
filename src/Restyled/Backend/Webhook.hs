@@ -9,11 +9,12 @@ module Restyled.Backend.Webhook
     )
 where
 
-import Restyled.Backend.Import
+import Restyled.Prelude
 
 import Restyled.Backend.AcceptedJob
 import Restyled.Backend.AcceptedWebhook
 import Restyled.Backend.ExecRestyler
+import Restyled.Models
 
 webhookQueueName :: ByteString
 webhookQueueName = "restyled:hooks:webhooks"
