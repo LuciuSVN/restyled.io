@@ -1,12 +1,12 @@
-module Authentication
+module Restyled.Authentication
     ( authenticateUser
     )
 where
 
 import Restyled.Prelude
 
-import Restyled.Models
 import Network.OAuth.OAuth2 as OAuth2
+import Restyled.Models
 import Restyled.Yesod
 
 data GitHubUser = GitHubUser

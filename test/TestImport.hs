@@ -16,7 +16,6 @@ import Restyled.Prelude as X hiding (get, runDB)
 import Application as X ()
 import Backend.Job (queueName)
 import Backend.Webhook (webhookQueueName)
-import Cache
 import Control.Monad.Fail (MonadFail(..))
 import Control.Monad.Logger (MonadLogger(..), toLogStr)
 import qualified Data.Text as T
@@ -25,10 +24,11 @@ import Database.Persist.Sql
 import Database.Redis (del)
 import Foundation as X
 import LoadEnv (loadEnvFrom)
+import Restyled.Cache
 import Restyled.Models as X
+import Restyled.Routes as X
 import Restyled.Settings as X (AppSettings(..), loadSettings)
 import qualified RIO.DB as RIO
-import Routes as X
 import Test.Hspec.Core.Spec (SpecM)
 import Test.Hspec.Lifted as X
 import Test.HUnit (assertFailure)

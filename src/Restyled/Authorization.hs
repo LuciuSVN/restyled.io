@@ -1,4 +1,4 @@
-module Authorization
+module Restyled.Authorization
     ( authorizeAdmin
     , authorizeRepo
     )
@@ -6,10 +6,10 @@ where
 
 import Restyled.Prelude
 
-import Cache
+import Restyled.Cache
 import Restyled.Models
-import Restyled.Yesod
 import Restyled.Settings
+import Restyled.Yesod
 
 authorizeAdmin
     :: MonadHandler m => AppSettings -> Maybe UserId -> SqlPersistT m AuthResult

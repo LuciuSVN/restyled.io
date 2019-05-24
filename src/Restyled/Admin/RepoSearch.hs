@@ -1,4 +1,4 @@
-module Admin.RepoSearch
+module Restyled.Admin.RepoSearch
     ( SearchResults(..)
     , noResults
     , searchRepos

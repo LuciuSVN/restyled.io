@@ -9,12 +9,12 @@ where
 
 import Restyled.Prelude
 
-import Admin.RepoSearch
 import Foundation
+import Restyled.Admin.RepoSearch
 import Restyled.Models
-import Restyled.Yesod
-import Routes
+import Restyled.Routes
 import Restyled.Settings
+import Restyled.Yesod
 import Widgets.Repo
 
 getAdminReposR :: Handler Html

@@ -1,4 +1,4 @@
-module StreamJobLogLines
+module Restyled.StreamJobLogLines
     ( streamJobLogLines
     )
 where
@@ -6,8 +6,8 @@ where
 import Restyled.Prelude
 
 import Foundation
-import Restyled.Models
 import qualified Network.WebSockets as WS
+import Restyled.Models
 import Widgets.JobLogLine
 import Yesod.WebSockets hiding (sendClose)
 

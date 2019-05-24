@@ -9,14 +9,14 @@ where
 import Restyled.Prelude
 
 import Api.Error
-import Authentication
-import Authorization
 import Data.Text (splitOn)
 import Database.Persist.Sql (ConnectionPool)
+import Restyled.Authentication
+import Restyled.Authorization
 import Restyled.Models
-import Restyled.Yesod
 import Restyled.Settings
 import Restyled.Settings.Display
+import Restyled.Yesod
 import Text.Hamlet (hamletFile)
 import Text.Jasmine (minifym)
 import Yesod.Default.Util (addStaticContentExternal)

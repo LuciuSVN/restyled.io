@@ -1,4 +1,4 @@
-module Cache
+module Restyled.Cache
     ( MonadCache(..)
     , CacheKey(..)
     , withCache

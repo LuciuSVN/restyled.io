@@ -11,7 +11,7 @@ import Formatting (format)
 import Formatting.Time (diff)
 import Foundation
 import Restyled.Models
-import Routes
+import Restyled.Routes
 import Restyled.Settings
 import Widgets.Job
 

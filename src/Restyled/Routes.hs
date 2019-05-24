@@ -1,5 +1,5 @@
 -- | Route helpers
-module Routes
+module Restyled.Routes
     (
     -- * Repos
       repoP

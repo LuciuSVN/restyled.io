@@ -9,9 +9,9 @@ import Restyled.Prelude
 
 import Foundation
 import Restyled.Models
-import Restyled.Yesod
-import Routes
+import Restyled.Routes
 import Restyled.Settings
+import Restyled.Yesod
 
 data Org = Org
     { orgId :: GitHubUserId
