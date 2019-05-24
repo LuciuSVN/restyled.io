@@ -6,14 +6,13 @@ module Foundation
     )
 where
 
--- TODO!
-import Restyled.Prelude hiding (runDB)
+import Restyled.Prelude
 
 import Api.Error
 import Authentication
 import Authorization
 import Data.Text (splitOn)
-import Database.Persist.Sql (ConnectionPool, runSqlPool)
+import Database.Persist.Sql (ConnectionPool)
 import Models
 import Restyled.Yesod
 import Settings
@@ -21,10 +20,9 @@ import Settings.Display
 import Text.Hamlet (hamletFile)
 import Text.Jasmine (minifym)
 import Yesod.Default.Util (addStaticContentExternal)
+import Yesod.Persist (YesodPersist)
+import qualified Yesod.Persist as YP
 import Yesod.Static
-
--- TODO!
-import Yesod (YesodPersist(..), YesodPersistRunner(..))
 
 data App = App
     { appLogFunc :: LogFunc
@@ -173,6 +171,13 @@ adminLayout widget = do
 staticR :: FilePath -> Route App
 staticR path = StaticR $ StaticRoute (splitOn "/" $ pack path) []
 
+-- | Only needed for YesodAuth to work, we use @'RIO.DB.runDB'@ directly
+instance YesodPersist App where
+    type YesodPersistBackend App = SqlBackend
+    runDB = runDB
+
+instance YesodAuthPersist App
+
 instance YesodAuth App where
     type AuthId App = UserId
 
@@ -197,16 +202,6 @@ instance YesodAuth App where
         . addOAuth2Plugin oauth2GitLab (appGitLabOAuthKeys appSettings)
         . addOAuth2Plugin oauth2GitHub (appGitHubOAuthKeys appSettings)
         $ []
-
-instance YesodAuthPersist App
-
-instance YesodPersist App where
-    type YesodPersistBackend App = SqlBackend
-    runDB action = do
-        master <- getYesod
-        runSqlPool action $ appConnPool master
-instance YesodPersistRunner App where
-    getDBRunner = defaultGetDBRunner appConnPool
 
 instance RenderMessage App FormMessage where
     renderMessage _ _ = defaultFormMessage
