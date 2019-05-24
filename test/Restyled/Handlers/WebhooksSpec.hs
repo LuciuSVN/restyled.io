@@ -5,9 +5,9 @@ where
 
 import TestImport
 
-import Restyled.Backend.Webhook
 import qualified Data.ByteString.Lazy as LB
 import qualified Data.ByteString.Lazy.Char8 as L8
+import Restyled.Backend.Webhook
 import System.FilePath ((</>))
 
 spec :: Spec

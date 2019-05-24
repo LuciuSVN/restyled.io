@@ -8,8 +8,8 @@ where
 import Restyled.Prelude
 
 import Restyled.Foundation
-import Restyled.Yesod
 import Restyled.Settings
+import Restyled.Yesod
 
 getHomeR :: Handler Html
 getHomeR = defaultLayout $ do

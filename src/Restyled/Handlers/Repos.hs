@@ -19,8 +19,8 @@ import Restyled.Models
 import Restyled.Routes
 import Restyled.Settings
 import Restyled.StreamJobLogLines
-import Restyled.Yesod
 import Restyled.Widgets.Job
+import Restyled.Yesod
 import Yesod.WebSockets
 
 getRepoR :: OwnerName -> RepoName -> Handler Html

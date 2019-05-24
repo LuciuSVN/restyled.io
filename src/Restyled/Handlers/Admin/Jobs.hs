@@ -10,9 +10,9 @@ import Restyled.Prelude
 
 import Restyled.Foundation
 import Restyled.Models
-import Restyled.Yesod
 import Restyled.Settings
 import Restyled.Widgets.Job
+import Restyled.Yesod
 
 getAdminJobsR :: Handler Html
 getAdminJobsR = do

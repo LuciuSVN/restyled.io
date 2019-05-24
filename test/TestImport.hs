@@ -13,8 +13,6 @@ where
 
 import Restyled.Prelude as X hiding (get, runDB)
 
-import Restyled.Backend.Job (queueName)
-import Restyled.Backend.Webhook (webhookQueueName)
 import Control.Monad.Fail (MonadFail(..))
 import Control.Monad.Logger (MonadLogger(..), toLogStr)
 import qualified Data.Text as T
@@ -23,6 +21,8 @@ import Database.Persist.Sql
 import Database.Redis (del)
 import LoadEnv (loadEnvFrom)
 import Restyled.Application as X ()
+import Restyled.Backend.Job (queueName)
+import Restyled.Backend.Webhook (webhookQueueName)
 import Restyled.Cache
 import Restyled.Foundation as X
 import Restyled.Models as X

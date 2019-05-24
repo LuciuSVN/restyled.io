@@ -7,12 +7,12 @@ where
 
 import Restyled.Prelude
 
-import Restyled.Backend.Marketplace (isPrivateRepoPlan)
 import Data.List (nub)
+import Restyled.Backend.Marketplace (isPrivateRepoPlan)
 import Restyled.Foundation
 import Restyled.Models
-import Restyled.Yesod
 import Restyled.Settings
+import Restyled.Yesod
 
 data MarketplacePlanWithAccounts = MarketplacePlanWithAccounts
     { mpwaPlan :: Entity MarketplacePlan

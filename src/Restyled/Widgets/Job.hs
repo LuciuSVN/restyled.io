@@ -22,8 +22,8 @@ import Restyled.Foundation
 import Restyled.Models
 import Restyled.Routes
 import Restyled.Settings
-import Text.Julius (RawJS(..))
 import Restyled.Widgets.ContainsURLs
+import Text.Julius (RawJS(..))
 
 -- | Internal helper for rendering completion state
 data Completion

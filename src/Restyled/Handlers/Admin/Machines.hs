@@ -15,8 +15,8 @@ import Restyled.Prelude
 import Restyled.Backend.RestyleMachine
 import Restyled.Foundation
 import Restyled.Models
-import Restyled.Yesod
 import Restyled.Settings
+import Restyled.Yesod
 
 machineForm :: Form RestyleMachine
 machineForm =

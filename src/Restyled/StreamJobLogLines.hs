@@ -5,8 +5,8 @@ where
 
 import Restyled.Prelude
 
-import Restyled.Foundation
 import qualified Network.WebSockets as WS
+import Restyled.Foundation
 import Restyled.Models
 import Restyled.Widgets.JobLogLine
 import Yesod.WebSockets hiding (sendClose)

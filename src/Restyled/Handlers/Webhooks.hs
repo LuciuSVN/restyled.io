@@ -5,10 +5,10 @@ where
 
 import Restyled.Prelude
 
-import Restyled.Backend.Webhook
 import Conduit
 import Data.ByteString.Lazy (toStrict)
 import Data.Conduit.Binary
+import Restyled.Backend.Webhook
 import Restyled.Foundation
 import Restyled.Yesod
 
