@@ -3,7 +3,7 @@ module Restyled.Handlers.ReposSpec
     )
 where
 
-import TestImport
+import Restyled.Test
 
 spec :: Spec
 spec = withApp $ do

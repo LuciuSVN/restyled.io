@@ -3,7 +3,7 @@ module Restyled.Widgets.ContainsURLsSpec
     )
 where
 
-import TestImport
+import Restyled.Test
 
 import Restyled.Widgets.ContainsURLs
 import Text.Megaparsec (errorBundlePretty, parse)

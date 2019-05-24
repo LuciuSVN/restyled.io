@@ -3,7 +3,7 @@ module Restyled.Handlers.WebhooksSpec
     )
 where
 
-import TestImport
+import Restyled.Test
 
 import qualified Data.ByteString.Lazy as LB
 import qualified Data.ByteString.Lazy.Char8 as L8

@@ -3,7 +3,7 @@ module Restyled.Models.UserSpec
     )
 where
 
-import TestImport
+import Restyled.Test
 
 import qualified Prelude as Unsafe
 

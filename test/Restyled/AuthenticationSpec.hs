@@ -5,7 +5,7 @@ module Restyled.AuthenticationSpec
     )
 where
 
-import TestImport
+import Restyled.Test
 
 import qualified Data.Text as T
 import Restyled.Authentication

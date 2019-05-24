@@ -1,7 +1,7 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
-module TestImport
+module Restyled.Test
     ( YesodSpec
     , YesodExpectation
     , runDB
