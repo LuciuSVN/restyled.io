@@ -8,10 +8,7 @@ import Restyled.Prelude
 import Cache
 import Models
 import Network.OAuth.OAuth2 as OAuth2
-import Yesod
-import Yesod.Auth
-import Yesod.Auth.Message
-import Yesod.Auth.OAuth2
+import Restyled.Yesod
 
 data GitHubUser = GitHubUser
     { ghuEmail :: Maybe Text

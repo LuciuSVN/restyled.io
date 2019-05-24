@@ -8,8 +8,8 @@ import Restyled.Prelude
 
 import Cache
 import Models
+import Restyled.Yesod
 import Settings
-import Yesod
 
 authorizeAdmin
     :: MonadHandler m => AppSettings -> Maybe UserId -> SqlPersistT m AuthResult

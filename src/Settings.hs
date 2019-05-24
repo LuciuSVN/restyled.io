@@ -25,7 +25,7 @@ import Database.Redis (ConnectInfo(..), defaultConnectInfo)
 import Language.Haskell.TH.Syntax (Exp, Q)
 import Network.Wai.Handler.Warp (HostPreference)
 import Restyled.Env
-import Yesod.Auth
+import Restyled.Yesod hiding (LogLevel(..))
 import Yesod.Auth.Dummy
 
 #if DEVELOPMENT

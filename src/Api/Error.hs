@@ -10,37 +10,36 @@ where
 import Restyled.Prelude
 
 import Network.HTTP.Types.Status
-import Yesod.Core (MonadHandler)
-import Yesod.Core.Handler (sendStatusJSON)
+import Restyled.Yesod
 
 data ApiError
     = ApiError Text -- ^ Generic message
     | ApiErrorNotFound Bool -- ^ Was the user logged in?
 
-data ErrorResponse = ErrorResponse
-    { erName :: Text
-    , erStatus :: Status
-    , erMessage :: Text
+data ApiErrorResponse = ApiErrorResponse
+    { aerName :: Text
+    , aerStatus :: Status
+    , aerMessage :: Text
     }
 
-apiErrorResponse :: ApiError -> ErrorResponse
+apiErrorResponse :: ApiError -> ApiErrorResponse
 apiErrorResponse = \case
-    ApiError msg -> ErrorResponse
-        { erName = "InternalError"
-        , erStatus = status500
-        , erMessage = msg
+    ApiError msg -> ApiErrorResponse
+        { aerName = "InternalError"
+        , aerStatus = status500
+        , aerMessage = msg
         }
-    ApiErrorNotFound isLoggedIn -> ErrorResponse
-        { erName = "NotFound"
-        , erStatus = status404
-        , erMessage = "Page not found"
+    ApiErrorNotFound isLoggedIn -> ApiErrorResponse
+        { aerName = "NotFound"
+        , aerStatus = status404
+        , aerMessage = "Page not found"
             <> if isLoggedIn then "" else " (you may need to log in)" <> "."
         }
 
-instance ToJSON ErrorResponse where
-    toJSON ErrorResponse{..} = object
-        [ "error" .= erName
-        , "message" .= erMessage
+instance ToJSON ApiErrorResponse where
+    toJSON ApiErrorResponse{..} = object
+        [ "error" .= aerName
+        , "message" .= aerMessage
         ]
 
 -- | Immediately send a response for the given @'ApiError'@
@@ -49,5 +48,5 @@ instance ToJSON ErrorResponse where
 -- but we type it @m 'Value'@ for annotation-free use with @'provideRep'@.
 --
 sendApiError :: MonadHandler m => ApiError -> m Value
-sendApiError apiError = sendStatusJSON (erStatus errorResponse) errorResponse
+sendApiError apiError = sendStatusJSON (aerStatus errorResponse) errorResponse
     where errorResponse = apiErrorResponse apiError
