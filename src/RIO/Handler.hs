@@ -1,21 +1,19 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
-module RIO.Handler
-    ( runHandlerRIO
-    )
-where
+module RIO.Handler () where
 
 import RIO
 
 import RIO.DB
+import RIO.Process
 import RIO.Redis
-import Yesod (HandlerFor, getYesod)
 import Yesod.Core.Types (HandlerData(..), RunHandlerEnv(..))
 
-runHandlerRIO :: RIO env a -> HandlerFor env a
-runHandlerRIO f = do
-    app <- getYesod
-    runRIO app f
+instance HasLogFunc env => HasLogFunc (HandlerData child env) where
+    logFuncL = handlerEnvL . siteL . logFuncL
+
+instance HasProcessContext env => HasProcessContext (HandlerData child env) where
+    processContextL = handlerEnvL . siteL . processContextL
 
 instance HasDB env => HasDB (HandlerData child env) where
     dbConnectionPoolL = handlerEnvL . siteL . dbConnectionPoolL

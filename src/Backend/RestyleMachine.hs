@@ -30,13 +30,17 @@ fetchRestyleMachine =
 
 -- | Run a process on a @'RestyleMachine'@s
 runRestyleMachine
-    :: (HasLogFunc env, HasProcessContext env)
+    :: ( HasLogFunc env
+       , HasProcessContext env
+       , MonadReader env m
+       , MonadUnliftIO m
+       )
     => RestyleMachine
     -> FilePath
     -> [String]
-    -> (String -> RIO env ())
-    -> (String -> RIO env ())
-    -> RIO env ExitCode
+    -> (String -> m ())
+    -> (String -> m ())
+    -> m ExitCode
 runRestyleMachine machine cmd args fOut fErr = do
     certPath <- restyleMachineCertPath machine
     setupCertificatesIfMissing machine certPath
@@ -48,7 +52,7 @@ runRestyleMachine machine cmd args fOut fErr = do
             ]
         $ followProcess cmd args fOut fErr
 
-setupCertificatesIfMissing :: RestyleMachine -> FilePath -> RIO env ()
+setupCertificatesIfMissing :: MonadIO m => RestyleMachine -> FilePath -> m ()
 setupCertificatesIfMissing RestyleMachine {..} certPath =
     unlessM (doesDirectoryExist certPath) $ do
         createDirectoryIfMissing True certPath

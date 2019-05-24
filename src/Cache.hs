@@ -10,7 +10,7 @@ import Restyled.Prelude hiding (get, set)
 
 import qualified Data.Text as T
 import Database.Redis (expire, get, set)
-import Yesod (HandlerFor)
+import Yesod.Core (HandlerFor)
 
 newtype CacheKey = CacheKey Text
 
@@ -19,11 +19,11 @@ class Monad m => MonadCache m where
     setCache :: ToJSON a => CacheKey -> a -> m ()
 
 instance HasRedis env => MonadCache (HandlerFor env) where
-    getCache (CacheKey key) = runHandlerRIO $ runRedis $ do
+    getCache (CacheKey key) = runRedis $ do
         eVal <- get $ encodeUtf8 key
         pure $ decodeStrict =<< join (hush eVal)
 
-    setCache (CacheKey key) obj = runHandlerRIO $ runRedis $ do
+    setCache (CacheKey key) obj = runRedis $ do
         void $ set (encodeUtf8 key) $ encodeStrict obj
         void $ expire (encodeUtf8 key) 300
 

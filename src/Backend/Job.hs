@@ -16,8 +16,8 @@ import Backend.Webhook
 queueName :: ByteString
 queueName = "restyled:restyler:jobs"
 
-enqueueJob :: HasRedis env => Entity Job -> RIO env ()
-enqueueJob = void . runRedis . lpush queueName . pure . encodeStrict
+enqueueJob :: Entity Job -> Redis ()
+enqueueJob = void . lpush queueName . pure . encodeStrict
 
 awaitJob :: HasRedis env => Integer -> RIO env (Maybe (Entity Job))
 awaitJob t = do
