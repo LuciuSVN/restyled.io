@@ -36,7 +36,7 @@ appMain = do
     setLineBuffering
 
     loadEnv
-    app <- loadApp =<< loadEnvSettings
+    app <- loadApp =<< loadSettings
 
     waiApp <- waiMiddleware app <$> toWaiAppPlain app
     runSettings (warpSettings app) waiApp

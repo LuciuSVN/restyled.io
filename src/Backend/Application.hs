@@ -20,7 +20,7 @@ backendMain = do
     setLineBuffering
 
     loadEnv
-    backend <- loadBackend =<< loadEnvSettings
+    backend <- loadBackend =<< loadSettings
 
     runRIO backend $ do
         asyncs <- sequence

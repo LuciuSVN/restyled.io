@@ -13,6 +13,7 @@ import Authentication
 import Authorization
 import Data.Text (splitOn)
 import Database.Persist.Sql (ConnectionPool, runSqlPool)
+import Settings.Display
 import Text.Hamlet (hamletFile)
 import Text.Jasmine (minifym)
 import Yesod

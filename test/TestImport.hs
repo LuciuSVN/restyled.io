@@ -28,8 +28,7 @@ import Models as X
 import qualified RIO.DB as DB
 import RIO.Orphans (HasResourceMap(..))
 import Routes as X
-import Settings as X (AppSettings(..))
-import Settings.Env (loadEnvSettings)
+import Settings as X (AppSettings(..), loadSettings)
 import Test.Hspec.Core.Spec (SpecM)
 import Test.Hspec.Lifted as X
 import Test.HUnit (assertFailure)
@@ -68,7 +67,7 @@ runTestRIO action = do
 withApp :: SpecWith (TestApp App) -> Spec
 withApp = before $ do
     loadEnvFrom ".env.test"
-    foundation <- loadApp =<< loadEnvSettings
+    foundation <- loadApp =<< loadSettings
     runRIO foundation $ do
         DB.runDB wipeDB
         runRedis wipeRedis
