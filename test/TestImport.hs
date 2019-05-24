@@ -21,13 +21,14 @@ import Database.Persist.Sql
 import Database.Redis (del)
 import LoadEnv (loadEnvFrom)
 import Restyled.Application as X ()
+import Restyled.Backend.Foundation (loadBackend)
 import Restyled.Backend.Job (queueName)
 import Restyled.Backend.Webhook (webhookQueueName)
 import Restyled.Cache
 import Restyled.Foundation as X
 import Restyled.Models as X
 import Restyled.Routes as X
-import Restyled.Settings as X (AppSettings(..), loadSettings)
+import Restyled.Settings as X
 import qualified RIO.DB as RIO
 import Test.Hspec.Core.Spec (SpecM)
 import Test.Hspec.Lifted as X
@@ -65,7 +66,7 @@ runDB = RIO.runDB
 withApp :: SpecWith (TestApp App) -> Spec
 withApp = before $ do
     loadEnvFrom ".env.test"
-    foundation <- loadApp =<< loadSettings
+    foundation <- loadApp =<< loadBackend =<< loadSettings
     runRIO foundation $ do
         RIO.runDB wipeDB
         runRedis wipeRedis
@@ -114,5 +115,5 @@ authenticateAs (Entity _ u) = do
 
 authPage :: Text -> YesodExample App Text
 authPage page = do
-    testRoot <- fmap (appRoot . appSettings) getTestYesod
+    testRoot <- fmap (appRoot . view settingsL) getTestYesod
     return $ testRoot <> "/auth/page" <> page

@@ -13,6 +13,7 @@ import Network.Wai.Handler.Warp
 import Network.Wai.Middleware.ForceSSL
 import Network.Wai.Middleware.MethodOverridePost
 import Network.Wai.Middleware.RequestLogger (logStdout, logStdoutDev)
+import Restyled.Backend.Foundation
 import Restyled.Foundation
 import Restyled.Handlers.Admin
 import Restyled.Handlers.Admin.Jobs
@@ -36,7 +37,7 @@ appMain = do
     setLineBuffering
 
     loadEnv
-    app <- loadApp =<< loadSettings
+    app <- loadApp =<< loadBackend =<< loadSettings
 
     waiApp <- waiMiddleware app <$> toWaiAppPlain app
     runSettings (warpSettings app) waiApp
@@ -46,15 +47,15 @@ waiMiddleware app =
     forceSSL . methodOverridePost . requestLogger . defaultMiddlewaresNoLogging
   where
     requestLogger
-        | appDetailedRequestLogger (appSettings app) = logStdoutDev
+        | appDetailedRequestLogger (app ^. settingsL) = logStdoutDev
         | otherwise = logStdout
 
 warpSettings :: App -> Settings
 warpSettings app =
     setHost host . setPort port . setOnException onEx $ defaultSettings
   where
-    port = appPort $ appSettings app
-    host = appHost $ appSettings app
+    port = appPort $ app ^. settingsL
+    host = appHost $ app ^. settingsL
     onEx _req ex =
         when (defaultShouldDisplayException ex)
             $ runRIO app

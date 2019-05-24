@@ -32,7 +32,7 @@ appRevision =
 getFaviconR :: Handler TypedContent
 getFaviconR = do
     cacheSeconds $ 60 * 60 * 24 * 30 -- cache for a month
-    favicon <- liftIO . C8.readFile =<< getsYesod (appFavicon . appSettings)
+    favicon <- liftIO . C8.readFile =<< getsYesod (appFavicon . view settingsL)
     pure $ TypedContent "image/x-icon" $ toContent favicon
 
 getRobotsR :: Handler TypedContent

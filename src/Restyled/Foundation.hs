@@ -9,10 +9,10 @@ where
 import Restyled.Prelude
 
 import Data.Text (splitOn)
-import Database.Persist.Sql (ConnectionPool)
 import Restyled.ApiError
 import Restyled.Authentication
 import Restyled.Authorization
+import Restyled.Backend.Foundation
 import Restyled.Models
 import Restyled.Settings
 import Restyled.Settings.Display
@@ -25,47 +25,35 @@ import qualified Yesod.Persist as YP
 import Yesod.Static
 
 data App = App
-    { appLogFunc :: LogFunc
-    , appSettings :: AppSettings
-    , appProcessContext :: ProcessContext
-    , appConnPool :: ConnectionPool
-    , appRedisConn :: Connection
+    { appBackend :: Backend
     , appStatic :: Static
     }
 
+backendL :: Lens' App Backend
+backendL = lens appBackend $ \x y -> x { appBackend = y }
+
 instance HasLogFunc App where
-    logFuncL = lens appLogFunc $ \x y -> x
-        { appLogFunc = y }
+    logFuncL = backendL . logFuncL
 
 instance HasProcessContext App where
-    processContextL = lens appProcessContext $ \x y -> x
-        { appProcessContext = y }
+    processContextL = backendL . processContextL
 
 instance HasSettings App where
-    settingsL = lens appSettings $ \x y -> x
-        { appSettings = y }
+    settingsL = backendL . settingsL
 
 instance HasDB App where
-    dbConnectionPoolL = lens appConnPool $ \x y -> x
-        { appConnPool = y }
+    dbConnectionPoolL = backendL . dbConnectionPoolL
 
 instance HasRedis App where
-    redisConnectionL = lens appRedisConn $ \x y -> x
-        { appRedisConn = y }
+    redisConnectionL = backendL . redisConnectionL
 
-loadApp :: AppSettings -> IO App
-loadApp settings = do
-    logFunc <- terminalLogFunc $ appLogLevel settings
-    runRIO logFunc $ logInfoN $ pack $ displayAppSettings settings
-
-    App logFunc settings
-        <$> mkDefaultProcessContext
-        <*> runRIO logFunc (createConnectionPool $ appDatabaseConf settings)
-        <*> checkedConnect (appRedisConf settings)
-        <*> makeStatic (appStaticDir settings)
+loadApp :: Backend -> IO App
+loadApp backend@Backend {..} = do
+    runRIO backend $ logInfoN $ pack $ displayAppSettings backendSettings
+    App backend <$> makeStatic (appStaticDir backendSettings)
   where
     makeStatic
-        | appMutableStatic settings = staticDevel
+        | appMutableStatic backendSettings = staticDevel
         | otherwise = static
 
 mkYesodData "App" $(parseRoutesFile "config/routes")
@@ -73,7 +61,7 @@ mkYesodData "App" $(parseRoutesFile "config/routes")
 type Form x = Html -> MForm (HandlerFor App) (FormResult x, Widget)
 
 instance Yesod App where
-    approot = ApprootMaster $ appRoot . appSettings
+    approot = ApprootMaster $ appRoot . view settingsL
 
     makeSessionBackend _ = Just
         -- 2 week session timeout
@@ -107,19 +95,19 @@ instance Yesod App where
         maybe AuthenticationRequired (const Authorized) <$> maybeAuthId
 
     isAuthorized AdminR _ = do
-        settings <- getsYesod appSettings
+        settings <- getsYesod $ view settingsL
         runDB $ authorizeAdmin settings =<< maybeAuthId
 
     isAuthorized (AdminP _) _ = do
-        settings <- getsYesod appSettings
+        settings <- getsYesod $ view settingsL
         runDB $ authorizeAdmin settings =<< maybeAuthId
 
     isAuthorized (RepoP owner repo _) _ = do
-        settings <- getsYesod appSettings
+        settings <- getsYesod $ view settingsL
         runDB $ authorizeRepo settings owner repo =<< maybeAuthId
 
     addStaticContent ext mime content = do
-        staticDir <- getsYesod $ appStaticDir . appSettings
+        staticDir <- getsYesod $ appStaticDir . view settingsL
 
         addStaticContentExternal
             minifym
@@ -133,7 +121,7 @@ instance Yesod App where
         -- Generate a unique filename based on the content itself
         genFileName lbs = "autogen-" ++ base64md5 lbs
 
-    messageLoggerSource app _logger = logFuncLog $ appLogFunc app
+    messageLoggerSource app _logger = logFuncLog $ app ^. logFuncL
 
     defaultMessageWidget title body = $(widgetFile "default-message-widget")
 
@@ -198,9 +186,9 @@ instance YesodAuth App where
             setTitle "Log In"
             $(widgetFile "login")
 
-    authPlugins App{..} = addAuthBackDoor appSettings
-        . addOAuth2Plugin oauth2GitLab (appGitLabOAuthKeys appSettings)
-        . addOAuth2Plugin oauth2GitHub (appGitHubOAuthKeys appSettings)
+    authPlugins app = addAuthBackDoor (app ^. settingsL)
+        . addOAuth2Plugin oauth2GitLab (appGitLabOAuthKeys $ app ^. settingsL)
+        . addOAuth2Plugin oauth2GitHub (appGitHubOAuthKeys $ app ^. settingsL)
         $ []
 
 instance RenderMessage App FormMessage where

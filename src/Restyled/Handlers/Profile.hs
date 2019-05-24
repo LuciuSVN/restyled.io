@@ -40,7 +40,7 @@ requestUserOrgs = maybe (pure []) requestUserNameOrgs . userGithubUsername
 
 requestUserNameOrgs :: GitHubUserName -> Handler [Org]
 requestUserNameOrgs username = do
-    settings <- getsYesod appSettings
+    settings <- getsYesod $ view settingsL
     requestOrgs settings username `catchAny` \ex -> do
         logWarnN $ tshow ex
         pure []
