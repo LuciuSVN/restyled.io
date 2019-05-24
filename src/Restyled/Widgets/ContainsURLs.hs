@@ -13,7 +13,7 @@ where
 
 import Restyled.Prelude hiding (some, try)
 
-import Foundation
+import Restyled.Foundation
 import Restyled.Yesod
 import Text.Megaparsec
 import Text.Megaparsec.Char

@@ -9,7 +9,7 @@ import Backend.Webhook
 import Conduit
 import Data.ByteString.Lazy (toStrict)
 import Data.Conduit.Binary
-import Foundation
+import Restyled.Foundation
 import Restyled.Yesod
 
 postWebhooksR :: Handler ()

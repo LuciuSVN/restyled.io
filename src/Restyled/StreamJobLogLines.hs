@@ -5,7 +5,7 @@ where
 
 import Restyled.Prelude
 
-import Foundation
+import Restyled.Foundation
 import qualified Network.WebSockets as WS
 import Restyled.Models
 import Restyled.Widgets.JobLogLine

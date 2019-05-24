@@ -5,7 +5,7 @@ where
 
 import Restyled.Prelude
 
-import Foundation
+import Restyled.Foundation
 import Restyled.Yesod
 
 getPrivacyPolicyR :: Handler Html

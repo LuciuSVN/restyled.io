@@ -13,7 +13,7 @@ import Restyled.Prelude
 import qualified Data.ByteString.Char8 as C8
 import Data.FileEmbed (embedFile)
 import Development.GitRev (gitCommitDate, gitHash)
-import Foundation
+import Restyled.Foundation
 import Restyled.Yesod
 import Restyled.Settings
 

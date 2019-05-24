@@ -9,7 +9,7 @@ import Restyled.Prelude
 
 import Backend.Marketplace (isPrivateRepoPlan)
 import Data.List (nub)
-import Foundation
+import Restyled.Foundation
 import Restyled.Models
 import Restyled.Yesod
 import Restyled.Settings

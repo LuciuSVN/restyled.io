@@ -7,7 +7,7 @@ where
 
 import Restyled.Prelude
 
-import Foundation
+import Restyled.Foundation
 import Restyled.Models
 
 data SearchResults

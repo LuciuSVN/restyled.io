@@ -13,7 +13,6 @@ where
 
 import Restyled.Prelude as X hiding (get, runDB)
 
-import Application as X ()
 import Backend.Job (queueName)
 import Backend.Webhook (webhookQueueName)
 import Control.Monad.Fail (MonadFail(..))
@@ -22,9 +21,10 @@ import qualified Data.Text as T
 import Database.Persist.Sql
     (SqlBackend, SqlPersistT, connEscapeName, rawExecute, rawSql, unSingle)
 import Database.Redis (del)
-import Foundation as X
 import LoadEnv (loadEnvFrom)
+import Restyled.Application as X ()
 import Restyled.Cache
+import Restyled.Foundation as X
 import Restyled.Models as X
 import Restyled.Routes as X
 import Restyled.Settings as X (AppSettings(..), loadSettings)

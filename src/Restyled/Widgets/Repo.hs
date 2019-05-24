@@ -9,7 +9,7 @@ import Restyled.Prelude
 
 import Formatting (format)
 import Formatting.Time (diff)
-import Foundation
+import Restyled.Foundation
 import Restyled.Models
 import Restyled.Routes
 import Restyled.Settings

@@ -18,7 +18,7 @@ import Restyled.Prelude
 import qualified Data.Text as T
 import Formatting (format)
 import Formatting.Time (diff)
-import Foundation
+import Restyled.Foundation
 import Restyled.Models
 import Restyled.Routes
 import Restyled.Settings

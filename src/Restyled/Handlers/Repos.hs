@@ -14,7 +14,7 @@ where
 import Restyled.Prelude
 
 import Backend.Job
-import Foundation
+import Restyled.Foundation
 import Restyled.Models
 import Restyled.Routes
 import Restyled.Settings

@@ -9,7 +9,7 @@ where
 
 import Restyled.Prelude
 
-import Foundation
+import Restyled.Foundation
 import Restyled.Admin.RepoSearch
 import Restyled.Models
 import Restyled.Routes
