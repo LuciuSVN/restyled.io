@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module Widgets.Repo
+module Restyled.Widgets.Repo
     ( repoCard
     )
 where
@@ -13,7 +13,7 @@ import Foundation
 import Restyled.Models
 import Restyled.Routes
 import Restyled.Settings
-import Widgets.Job
+import Restyled.Widgets.Job
 
 repoCard :: RepoWithStats -> Widget
 repoCard RepoWithStats {..} = do

@@ -1,4 +1,4 @@
-module Widgets.JobLogLine
+module Restyled.Widgets.JobLogLine
     ( renderJobLogLine
     )
 where
@@ -10,7 +10,7 @@ import Foundation
 import Restyled.Models
 import Restyled.Yesod
 import Text.Blaze.Html.Renderer.Text (renderHtml)
-import Widgets.Job
+import Restyled.Widgets.Job
 
 renderJobLogLine :: Entity JobLogLine -> Handler LT.Text
 renderJobLogLine logLine = do

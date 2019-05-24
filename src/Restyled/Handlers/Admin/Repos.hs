@@ -15,7 +15,7 @@ import Restyled.Models
 import Restyled.Routes
 import Restyled.Settings
 import Restyled.Yesod
-import Widgets.Repo
+import Restyled.Widgets.Repo
 
 getAdminReposR :: Handler Html
 getAdminReposR = do

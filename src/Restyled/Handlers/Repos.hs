@@ -20,7 +20,7 @@ import Restyled.Routes
 import Restyled.Settings
 import Restyled.StreamJobLogLines
 import Restyled.Yesod
-import Widgets.Job
+import Restyled.Widgets.Job
 import Yesod.WebSockets
 
 getRepoR :: OwnerName -> RepoName -> Handler Html

@@ -8,7 +8,7 @@ import Restyled.Prelude
 import Foundation
 import qualified Network.WebSockets as WS
 import Restyled.Models
-import Widgets.JobLogLine
+import Restyled.Widgets.JobLogLine
 import Yesod.WebSockets hiding (sendClose)
 
 streamJobLogLines :: JobId -> WebSocketsT Handler ()

@@ -1,12 +1,12 @@
-module Widgets.ContainsURLsSpec
+module Restyled.Widgets.ContainsURLsSpec
     ( spec
     )
 where
 
 import TestImport
 
+import Restyled.Widgets.ContainsURLs
 import Text.Megaparsec (errorBundlePretty, parse)
-import Widgets.ContainsURLs
 
 spec :: Spec
 spec = do

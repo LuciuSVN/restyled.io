@@ -12,7 +12,7 @@ import Foundation
 import Restyled.Models
 import Restyled.Yesod
 import Restyled.Settings
-import Widgets.Job
+import Restyled.Widgets.Job
 
 getAdminJobsR :: Handler Html
 getAdminJobsR = do

@@ -1,6 +1,6 @@
 {-# LANGUAGE QuasiQuotes #-}
 
-module Widgets.ContainsURLs
+module Restyled.Widgets.ContainsURLs
     ( renderWithURLs
 
     -- * Exported to be tested

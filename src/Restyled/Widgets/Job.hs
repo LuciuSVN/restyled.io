@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module Widgets.Job
+module Restyled.Widgets.Job
     ( jobCard
     , jobOutput
 
@@ -23,7 +23,7 @@ import Restyled.Models
 import Restyled.Routes
 import Restyled.Settings
 import Text.Julius (RawJS(..))
-import Widgets.ContainsURLs
+import Restyled.Widgets.ContainsURLs
 
 -- | Internal helper for rendering completion state
 data Completion
