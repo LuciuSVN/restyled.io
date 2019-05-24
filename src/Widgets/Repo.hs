@@ -5,12 +5,14 @@ module Widgets.Repo
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Formatting (format)
 import Formatting.Time (diff)
 import Foundation
+import Models
 import Routes
+import Settings
 import Widgets.Job
 
 repoCard :: RepoWithStats -> Widget

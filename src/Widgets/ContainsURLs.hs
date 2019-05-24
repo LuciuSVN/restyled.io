@@ -11,12 +11,12 @@ module Widgets.ContainsURLs
     )
 where
 
-import Import hiding (some, try)
+import Restyled.Prelude hiding (some, try)
 
 import Foundation
+import Restyled.Yesod
 import Text.Megaparsec
 import Text.Megaparsec.Char
-import Yesod
 
 data ContentPart
     = ContentPart Text

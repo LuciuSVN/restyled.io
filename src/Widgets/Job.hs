@@ -13,13 +13,15 @@ module Widgets.Job
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import qualified Data.Text as T
 import Formatting (format)
 import Formatting.Time (diff)
 import Foundation
+import Models
 import Routes
+import Settings
 import Text.Julius (RawJS(..))
 import Widgets.ContainsURLs
 

@@ -6,7 +6,7 @@ module Application
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Foundation
 import Handler.Admin
@@ -26,8 +26,8 @@ import Network.Wai.Handler.Warp
 import Network.Wai.Middleware.ForceSSL
 import Network.Wai.Middleware.MethodOverridePost
 import Network.Wai.Middleware.RequestLogger (logStdout, logStdoutDev)
-import Yesod
-import Yesod.Auth
+import Restyled.Yesod
+import Settings
 
 mkYesodDispatch "App" resourcesApp
 
