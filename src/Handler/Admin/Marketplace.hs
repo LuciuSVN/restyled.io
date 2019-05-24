@@ -10,9 +10,9 @@ import Restyled.Prelude
 import Backend.Marketplace (isPrivateRepoPlan)
 import Data.List (nub)
 import Foundation
-import Models
+import Restyled.Models
 import Restyled.Yesod
-import Settings
+import Restyled.Settings
 
 data MarketplacePlanWithAccounts = MarketplacePlanWithAccounts
     { mpwaPlan :: Entity MarketplacePlan

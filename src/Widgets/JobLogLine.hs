@@ -7,7 +7,7 @@ import Restyled.Prelude
 
 import qualified Data.Text.Lazy as LT
 import Foundation
-import Models
+import Restyled.Models
 import Restyled.Yesod
 import Text.Blaze.Html.Renderer.Text (renderHtml)
 import Widgets.Job

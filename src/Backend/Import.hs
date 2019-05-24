@@ -5,5 +5,5 @@ where
 
 import Restyled.Prelude as X
 
-import Models as X
-import Settings as X
+import Restyled.Models as X
+import Restyled.Settings as X

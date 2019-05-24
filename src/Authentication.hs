@@ -5,7 +5,7 @@ where
 
 import Restyled.Prelude
 
-import Models
+import Restyled.Models
 import Network.OAuth.OAuth2 as OAuth2
 import Restyled.Yesod
 

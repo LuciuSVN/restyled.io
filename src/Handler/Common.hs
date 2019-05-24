@@ -15,7 +15,7 @@ import Data.FileEmbed (embedFile)
 import Development.GitRev (gitCommitDate, gitHash)
 import Foundation
 import Restyled.Yesod
-import Settings
+import Restyled.Settings
 
 getRevisionR :: Handler TypedContent
 getRevisionR = pure . TypedContent typePlain $ toContent appRevision

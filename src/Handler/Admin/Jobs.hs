@@ -9,9 +9,9 @@ where
 import Restyled.Prelude
 
 import Foundation
-import Models
+import Restyled.Models
 import Restyled.Yesod
-import Settings
+import Restyled.Settings
 import Widgets.Job
 
 getAdminJobsR :: Handler Html

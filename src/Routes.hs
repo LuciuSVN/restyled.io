@@ -23,7 +23,7 @@ where
 import Restyled.Prelude
 
 import Foundation
-import Models
+import Restyled.Models
 import Restyled.Yesod
 
 repoP :: OwnerName -> RepoName -> RepoP -> Route App

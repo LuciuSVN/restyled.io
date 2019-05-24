@@ -25,10 +25,10 @@ import Database.Persist.Sql
 import Database.Redis (del)
 import Foundation as X
 import LoadEnv (loadEnvFrom)
-import Models as X
+import Restyled.Models as X
+import Restyled.Settings as X (AppSettings(..), loadSettings)
 import qualified RIO.DB as RIO
 import Routes as X
-import Settings as X (AppSettings(..), loadSettings)
 import Test.Hspec.Core.Spec (SpecM)
 import Test.Hspec.Lifted as X
 import Test.HUnit (assertFailure)

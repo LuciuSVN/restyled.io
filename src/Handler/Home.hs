@@ -9,7 +9,7 @@ import Restyled.Prelude
 
 import Foundation
 import Restyled.Yesod
-import Settings
+import Restyled.Settings
 
 getHomeR :: Handler Html
 getHomeR = defaultLayout $ do

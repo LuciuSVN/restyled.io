@@ -7,9 +7,9 @@ where
 import Restyled.Prelude
 
 import Cache
-import Models
+import Restyled.Models
 import Restyled.Yesod
-import Settings
+import Restyled.Settings
 
 authorizeAdmin
     :: MonadHandler m => AppSettings -> Maybe UserId -> SqlPersistT m AuthResult

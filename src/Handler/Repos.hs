@@ -15,10 +15,10 @@ import Restyled.Prelude
 
 import Backend.Job
 import Foundation
-import Models
+import Restyled.Models
 import Restyled.Yesod
 import Routes
-import Settings
+import Restyled.Settings
 import StreamJobLogLines
 import Widgets.Job
 import Yesod.WebSockets

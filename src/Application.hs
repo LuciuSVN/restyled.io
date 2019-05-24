@@ -27,7 +27,7 @@ import Network.Wai.Middleware.ForceSSL
 import Network.Wai.Middleware.MethodOverridePost
 import Network.Wai.Middleware.RequestLogger (logStdout, logStdoutDev)
 import Restyled.Yesod
-import Settings
+import Restyled.Settings
 
 mkYesodDispatch "App" resourcesApp
 

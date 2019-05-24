@@ -13,10 +13,10 @@ import Authentication
 import Authorization
 import Data.Text (splitOn)
 import Database.Persist.Sql (ConnectionPool)
-import Models
+import Restyled.Models
 import Restyled.Yesod
-import Settings
-import Settings.Display
+import Restyled.Settings
+import Restyled.Settings.Display
 import Text.Hamlet (hamletFile)
 import Text.Jasmine (minifym)
 import Yesod.Default.Util (addStaticContentExternal)

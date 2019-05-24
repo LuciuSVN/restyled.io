@@ -10,9 +10,9 @@ import Restyled.Prelude
 import Formatting (format)
 import Formatting.Time (diff)
 import Foundation
-import Models
+import Restyled.Models
 import Routes
-import Settings
+import Restyled.Settings
 import Widgets.Job
 
 repoCard :: RepoWithStats -> Widget

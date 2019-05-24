@@ -10,7 +10,7 @@ import Restyled.Prelude
 
 import Foundation
 import Restyled.Yesod
-import Settings
+import Restyled.Settings
 
 -- brittany-disable-next-binding
 

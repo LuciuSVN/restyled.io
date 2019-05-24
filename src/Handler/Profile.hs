@@ -8,10 +8,10 @@ where
 import Restyled.Prelude
 
 import Foundation
-import Models
+import Restyled.Models
 import Restyled.Yesod
 import Routes
-import Settings
+import Restyled.Settings
 
 data Org = Org
     { orgId :: GitHubUserId
