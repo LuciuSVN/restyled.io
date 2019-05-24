@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module Handler.Repos
+module Restyled.Handlers.Repos
     ( getRepoR
     , getRepoPullR
     , getRepoPullJobsR

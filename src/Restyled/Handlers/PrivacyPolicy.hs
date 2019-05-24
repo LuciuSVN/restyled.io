@@ -1,4 +1,4 @@
-module Handler.PrivacyPolicy
+module Restyled.Handlers.PrivacyPolicy
     ( getPrivacyPolicyR
     )
 where

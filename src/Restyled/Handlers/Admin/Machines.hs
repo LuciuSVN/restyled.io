@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module Handler.Admin.Machines
+module Restyled.Handlers.Admin.Machines
     ( getAdminMachinesR
     , getAdminMachinesNewR
     , postAdminMachinesR

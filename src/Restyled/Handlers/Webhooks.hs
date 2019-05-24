@@ -1,4 +1,4 @@
-module Handler.Webhooks
+module Restyled.Handlers.Webhooks
     ( postWebhooksR
     )
 where

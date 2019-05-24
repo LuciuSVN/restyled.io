@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module Handler.Home
+module Restyled.Handlers.Home
     ( getHomeR
     )
 where

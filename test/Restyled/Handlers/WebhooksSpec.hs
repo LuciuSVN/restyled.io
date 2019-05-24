@@ -1,4 +1,4 @@
-module Handler.WebhooksSpec
+module Restyled.Handlers.WebhooksSpec
     ( spec
     )
 where

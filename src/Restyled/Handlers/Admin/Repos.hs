@@ -1,7 +1,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 
 -- | All repos in the system
-module Handler.Admin.Repos
+module Restyled.Handlers.Admin.Repos
     ( getAdminReposR
     , getAdminReposSearchR
     )

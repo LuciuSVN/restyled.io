@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module Handler.Thanks
+module Restyled.Handlers.Thanks
     ( getThanksGitHubR
     , getThanksGitHubSetupR
     )

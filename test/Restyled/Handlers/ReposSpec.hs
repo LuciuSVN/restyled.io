@@ -1,4 +1,4 @@
-module Handler.ReposSpec
+module Restyled.Handlers.ReposSpec
     ( spec
     )
 where

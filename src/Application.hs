@@ -9,25 +9,25 @@ where
 import Restyled.Prelude
 
 import Foundation
-import Handler.Admin
-import Handler.Admin.Jobs
-import Handler.Admin.Machines
-import Handler.Admin.Marketplace
-import Handler.Admin.Repos
-import Handler.Common
-import Handler.Home
-import Handler.PrivacyPolicy
-import Handler.Profile
-import Handler.Repos
-import Handler.Thanks
-import Handler.Webhooks
 import Network.Wai (Middleware)
 import Network.Wai.Handler.Warp
 import Network.Wai.Middleware.ForceSSL
 import Network.Wai.Middleware.MethodOverridePost
 import Network.Wai.Middleware.RequestLogger (logStdout, logStdoutDev)
-import Restyled.Yesod
+import Restyled.Handlers.Admin
+import Restyled.Handlers.Admin.Jobs
+import Restyled.Handlers.Admin.Machines
+import Restyled.Handlers.Admin.Marketplace
+import Restyled.Handlers.Admin.Repos
+import Restyled.Handlers.Common
+import Restyled.Handlers.Home
+import Restyled.Handlers.PrivacyPolicy
+import Restyled.Handlers.Profile
+import Restyled.Handlers.Repos
+import Restyled.Handlers.Thanks
+import Restyled.Handlers.Webhooks
 import Restyled.Settings
+import Restyled.Yesod
 
 mkYesodDispatch "App" resourcesApp
 

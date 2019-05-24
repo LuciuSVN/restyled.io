@@ -1,7 +1,7 @@
 {-# LANGUAGE CPP #-}
 {-# LANGUAGE TemplateHaskell #-}
 
-module Handler.Common
+module Restyled.Handlers.Common
     ( getRevisionR
     , getFaviconR
     , getRobotsR

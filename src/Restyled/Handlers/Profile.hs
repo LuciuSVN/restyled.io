@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module Handler.Profile
+module Restyled.Handlers.Profile
     ( getProfileR
     )
 where

@@ -1,4 +1,4 @@
-module Handler.AdminSpec
+module Restyled.Handlers.AdminSpec
     ( spec
     )
 where

@@ -1,4 +1,4 @@
-module Handler.HomeSpec
+module Restyled.Handlers.HomeSpec
     ( spec
     )
 where

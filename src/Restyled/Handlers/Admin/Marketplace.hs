@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module Handler.Admin.Marketplace
+module Restyled.Handlers.Admin.Marketplace
     ( getAdminMarketplaceR
     )
 where

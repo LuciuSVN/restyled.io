@@ -1,4 +1,4 @@
-module Handler.Admin
+module Restyled.Handlers.Admin
     ( getAdminR
     )
 where

@@ -1,4 +1,7 @@
-module Handler.CommonSpec (spec) where
+module Restyled.Handlers.CommonSpec
+    ( spec
+    )
+where
 
 import TestImport
 

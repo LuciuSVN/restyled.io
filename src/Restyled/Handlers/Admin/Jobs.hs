@@ -1,7 +1,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 
 -- | List all Jobs in the system
-module Handler.Admin.Jobs
+module Restyled.Handlers.Admin.Jobs
     ( getAdminJobsR
     )
 where
