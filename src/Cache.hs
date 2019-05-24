@@ -10,7 +10,7 @@ import Restyled.Prelude hiding (get, set)
 
 import qualified Data.Text as T
 import Database.Redis (expire, get, set)
-import Yesod.Core (HandlerFor)
+import Restyled.Yesod
 
 newtype CacheKey = CacheKey Text
 

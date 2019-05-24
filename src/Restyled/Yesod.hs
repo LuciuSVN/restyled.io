@@ -4,6 +4,7 @@ module Restyled.Yesod
 where
 
 import Network.HTTP.Types.Status as X
+import RIO.Handler as X ()
 import Yesod.Auth as X
 import Yesod.Auth.OAuth2 as X
 import Yesod.Auth.OAuth2.GitHub as X

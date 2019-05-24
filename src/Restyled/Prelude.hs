@@ -22,7 +22,6 @@ module Restyled.Prelude
     )
 where
 
-
 import RIO as X hiding (Handler, first, second)
 
 import Control.Error.Util as X
@@ -46,7 +45,6 @@ import Database.Persist as X
 import Database.Persist.Sql as X (SqlBackend, SqlPersistT)
 import GitHub.Data as X (toPathPart)
 import RIO.DB as X
-import RIO.Handler as X ()
 import RIO.List as X (headMaybe)
 import RIO.Logger as X
 import RIO.Process as X
