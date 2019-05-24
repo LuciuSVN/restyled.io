@@ -3,7 +3,6 @@
 
 module Restyled.Test
     ( YesodSpec
-    , YesodExpectation
     , runDB
     , withApp
     , authenticateAsUser
@@ -38,8 +37,6 @@ import Text.Shakespeare.Text (st)
 import Yesod.Test as X hiding (YesodSpec)
 
 type YesodSpec site = SpecM (TestApp site)
-
-type YesodExpectation = YesodExample App ()
 
 instance MonadCache (YesodExample App) where
     getCache _ = pure Nothing
