@@ -11,7 +11,7 @@ module TestImport
     )
 where
 
-import Restyled.Prelude as X hiding (Handler, get, runDB)
+import Restyled.Prelude as X hiding (get, runDB)
 
 import Application as X ()
 import Backend.Job (queueName)
@@ -52,6 +52,10 @@ instance MonadHandler (RIO App) where
 
     liftHandler = error "liftHandler used in test"
     liftSubHandler = error "liftSubHandler used in test"
+
+instance MonadReader site (SIO (YesodExampleData site)) where
+    ask = getTestYesod
+    local = error "local used in test"
 
 instance MonadFail (SIO s) where
     fail = liftIO . assertFailure
@@ -106,7 +110,7 @@ getTables = map unSingle <$> rawSql
 -- N.B. Only use this once (for a given @'User'@) per spec.
 --
 authenticateAsUser :: User -> YesodExample App ()
-authenticateAsUser = authenticateAs <=< runDB . insertEntity
+authenticateAsUser = authenticateAs <=< DB.runDB . insertEntity
 
 authenticateAs :: Entity User -> YesodExample App ()
 authenticateAs (Entity _ u) = do

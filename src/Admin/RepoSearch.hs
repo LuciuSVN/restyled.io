@@ -5,10 +5,10 @@ module Admin.RepoSearch
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Foundation
-import Yesod
+import Models
 
 data SearchResults
     = SearchResults

@@ -3,7 +3,7 @@ module Import
     )
 where
 
-import Restyled.Prelude as X hiding (Handler, runDB)
+import Restyled.Prelude as X hiding (runDB)
 
 import Models as X
 import Settings as X

@@ -23,7 +23,7 @@ module Restyled.Prelude
 where
 
 
-import RIO as X hiding (first, second)
+import RIO as X hiding (Handler, first, second)
 
 import Control.Error.Util as X
     (exceptT, hoistMaybe, hush, hushT, note, noteT, (??))
