@@ -5,10 +5,11 @@ module Handler.Home
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Foundation
-import Yesod
+import Restyled.Yesod
+import Settings
 
 getHomeR :: Handler Html
 getHomeR = defaultLayout $ do

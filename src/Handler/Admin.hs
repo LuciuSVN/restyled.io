@@ -3,10 +3,10 @@ module Handler.Admin
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Foundation
-import Yesod
+import Restyled.Yesod
 
 getAdminR :: Handler Html
 getAdminR = redirect $ AdminP $ AdminJobsP AdminJobsR

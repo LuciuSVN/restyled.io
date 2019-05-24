@@ -6,11 +6,11 @@ module Handler.Thanks
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Foundation
-import Yesod
-import Yesod.Auth.OAuth2
+import Restyled.Yesod
+import Settings
 
 -- brittany-disable-next-binding
 

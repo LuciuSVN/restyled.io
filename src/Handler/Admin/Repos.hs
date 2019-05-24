@@ -7,14 +7,15 @@ module Handler.Admin.Repos
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Admin.RepoSearch
 import Foundation
+import Models
+import Restyled.Yesod
 import Routes
+import Settings
 import Widgets.Repo
-import Yesod
-import Yesod.Paginator
 
 getAdminReposR :: Handler Html
 getAdminReposR = do

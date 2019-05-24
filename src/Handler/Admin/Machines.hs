@@ -10,11 +10,13 @@ module Handler.Admin.Machines
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Backend.RestyleMachine
 import Foundation
-import Yesod
+import Models
+import Restyled.Yesod
+import Settings
 
 machineForm :: Form RestyleMachine
 machineForm =

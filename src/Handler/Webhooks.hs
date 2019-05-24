@@ -3,18 +3,17 @@ module Handler.Webhooks
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Backend.Webhook
 import Conduit
 import Data.ByteString.Lazy (toStrict)
 import Data.Conduit.Binary
 import Foundation
-import Network.HTTP.Types.Status
-import Yesod
+import Restyled.Yesod
 
 postWebhooksR :: Handler ()
 postWebhooksR = do
     body <- runConduit $ rawRequestBody .| sinkLbs
-    runHandlerRIO $ enqueueWebhook $ toStrict body
+    runRedis $ enqueueWebhook $ toStrict body
     sendResponseStatus @_ @Text status201 ""

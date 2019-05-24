@@ -3,12 +3,12 @@ module StreamJobLogLines
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Foundation
+import Models
 import qualified Network.WebSockets as WS
 import Widgets.JobLogLine
-import Yesod
 import Yesod.WebSockets hiding (sendClose)
 
 streamJobLogLines :: JobId -> WebSocketsT Handler ()

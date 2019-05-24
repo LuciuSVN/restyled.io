@@ -20,10 +20,11 @@ module Routes
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Foundation
-import Yesod
+import Models
+import Restyled.Yesod
 
 repoP :: OwnerName -> RepoName -> RepoP -> Route App
 repoP = RepoP

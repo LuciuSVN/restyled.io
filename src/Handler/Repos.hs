@@ -11,15 +11,16 @@ module Handler.Repos
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Backend.Job
 import Foundation
+import Models
+import Restyled.Yesod
 import Routes
+import Settings
 import StreamJobLogLines
 import Widgets.Job
-import Yesod
-import Yesod.Paginator
 import Yesod.WebSockets
 
 getRepoR :: OwnerName -> RepoName -> Handler Html

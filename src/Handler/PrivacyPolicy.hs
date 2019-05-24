@@ -3,10 +3,10 @@ module Handler.PrivacyPolicy
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Foundation
-import Yesod
+import Restyled.Yesod
 
 getPrivacyPolicyR :: Handler Html
 getPrivacyPolicyR = redirect @_ @Text

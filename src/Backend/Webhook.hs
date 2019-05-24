@@ -18,8 +18,8 @@ import Backend.ExecRestyler
 webhookQueueName :: ByteString
 webhookQueueName = "restyled:hooks:webhooks"
 
-enqueueWebhook :: HasRedis env => ByteString -> RIO env ()
-enqueueWebhook = void . runRedis . lpush webhookQueueName . pure
+enqueueWebhook :: ByteString -> Redis ()
+enqueueWebhook = void . lpush webhookQueueName . pure
 
 awaitWebhook :: HasRedis env => Integer -> RIO env (Maybe ByteString)
 awaitWebhook t = do

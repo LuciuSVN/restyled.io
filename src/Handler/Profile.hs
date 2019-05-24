@@ -5,12 +5,13 @@ module Handler.Profile
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Foundation
+import Models
+import Restyled.Yesod
 import Routes
-import Yesod
-import Yesod.Auth
+import Settings
 
 data Org = Org
     { orgId :: GitHubUserId

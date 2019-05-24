@@ -6,12 +6,13 @@ module Handler.Admin.Jobs
     )
 where
 
-import Import
+import Restyled.Prelude
 
 import Foundation
+import Models
+import Restyled.Yesod
+import Settings
 import Widgets.Job
-import Yesod
-import Yesod.Paginator
 
 getAdminJobsR :: Handler Html
 getAdminJobsR = do
