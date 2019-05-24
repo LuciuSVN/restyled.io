@@ -1,14 +1,14 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
-module AuthenticationSpec
+module Restyled.AuthenticationSpec
     ( spec
     )
 where
 
 import TestImport
 
-import Authentication
 import qualified Data.Text as T
+import Restyled.Authentication
 import Restyled.Yesod
 
 instance Eq (AuthenticationResult App) where
