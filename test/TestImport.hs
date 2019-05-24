@@ -3,9 +3,9 @@
 
 module TestImport
     ( YesodSpec
+    , YesodExpectation
     , runDB
     , withApp
-    , runTestRIO
     , authenticateAsUser
     , module X
     )
@@ -18,6 +18,7 @@ import Backend.Job (queueName)
 import Backend.Webhook (webhookQueueName)
 import Cache
 import Control.Monad.Fail (MonadFail(..))
+import Control.Monad.Logger (MonadLogger(..), toLogStr)
 import qualified Data.Text as T
 import Database.Persist.Sql
     (SqlBackend, SqlPersistT, connEscapeName, rawExecute, rawSql, unSingle)
@@ -25,8 +26,7 @@ import Database.Redis (del)
 import Foundation as X
 import LoadEnv (loadEnvFrom)
 import Models as X
-import qualified RIO.DB as DB
-import RIO.Orphans (HasResourceMap(..))
+import qualified RIO.DB as RIO
 import Routes as X
 import Settings as X (AppSettings(..), loadSettings)
 import Test.Hspec.Core.Spec (SpecM)
@@ -34,46 +34,40 @@ import Test.Hspec.Lifted as X
 import Test.HUnit (assertFailure)
 import Test.QuickCheck as X
 import Text.Shakespeare.Text (st)
-import Yesod.Core (MonadHandler(..))
 import Yesod.Test as X hiding (YesodSpec)
 
 type YesodSpec site = SpecM (TestApp site)
 
-instance MonadCache (RIO App) where
+type YesodExpectation = YesodExample App ()
+
+instance MonadCache (YesodExample App) where
     getCache _ = pure Nothing
     setCache _ _ = pure ()
 
-instance HasResourceMap App where
-    resourceMapL = error "resourceMapL used in test"
-
-instance MonadHandler (RIO App) where
-    type HandlerSite (RIO App) = ()
-    type SubHandlerSite (RIO App) = ()
-
-    liftHandler = error "liftHandler used in test"
-    liftSubHandler = error "liftSubHandler used in test"
+instance HasLogFunc site => MonadLogger (YesodExample site) where
+    monadLoggerLog loc source level msg = do
+        logFunc <- view logFuncL
+        liftIO $ logFuncLog logFunc loc source level $ toLogStr msg
 
 instance MonadReader site (SIO (YesodExampleData site)) where
     ask = getTestYesod
+
+    -- yesod-test doesn't expose enough of SIO to do this
     local = error "local used in test"
 
 instance MonadFail (SIO s) where
     fail = liftIO . assertFailure
 
-runDB :: HasDB env => SqlPersistT (RIO env) a -> YesodExample env a
-runDB = runTestRIO . DB.runDB
-
-runTestRIO :: RIO env a -> YesodExample env a
-runTestRIO action = do
-    app <- getTestYesod
-    runRIO app action
+-- | A monomorphic alias just to avoid annotations in specs
+runDB :: HasDB env => SqlPersistT (YesodExample env) a -> YesodExample env a
+runDB = RIO.runDB
 
 withApp :: SpecWith (TestApp App) -> Spec
 withApp = before $ do
     loadEnvFrom ".env.test"
     foundation <- loadApp =<< loadSettings
     runRIO foundation $ do
-        DB.runDB wipeDB
+        RIO.runDB wipeDB
         runRedis wipeRedis
     return (foundation, id)
 
@@ -110,7 +104,7 @@ getTables = map unSingle <$> rawSql
 -- N.B. Only use this once (for a given @'User'@) per spec.
 --
 authenticateAsUser :: User -> YesodExample App ()
-authenticateAsUser = authenticateAs <=< DB.runDB . insertEntity
+authenticateAsUser = authenticateAs <=< runDB . insertEntity
 
 authenticateAs :: Entity User -> YesodExample App ()
 authenticateAs (Entity _ u) = do

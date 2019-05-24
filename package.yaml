@@ -158,6 +158,7 @@ tests:
       - hspec-expectations-lifted
       - load-env
       - megaparsec
+      - monad-logger
       - persistent
       - rio
       - rio-orphans

@@ -21,7 +21,10 @@ webhookQueueName = "restyled:hooks:webhooks"
 enqueueWebhook :: ByteString -> Redis ()
 enqueueWebhook = void . lpush webhookQueueName . pure
 
-awaitWebhook :: HasRedis env => Integer -> RIO env (Maybe ByteString)
+awaitWebhook
+    :: (HasRedis env, MonadReader env m, MonadIO m)
+    => Integer
+    -> m (Maybe ByteString)
 awaitWebhook t = do
     eresult <- runRedis $ brpop [webhookQueueName] t
     pure $ either (const Nothing) (snd <$>) eresult

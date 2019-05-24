@@ -5,7 +5,6 @@ where
 
 import Restyled.Prelude
 
-import Cache
 import Models
 import Network.OAuth.OAuth2 as OAuth2
 import Restyled.Yesod
@@ -31,7 +30,7 @@ instance FromJSON GitLabUser where
     parseJSON = genericParseJSON $ aesonPrefix snakeCase
 
 authenticateUser
-    :: (AuthId site ~ UserId, MonadCache m, MonadHandler m)
+    :: (AuthId site ~ UserId, MonadLogger m, MonadIO m)
     => Creds site
     -> SqlPersistT m (AuthenticationResult site)
 authenticateUser creds@Creds {..} = do
